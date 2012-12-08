@@ -1,0 +1,22 @@
+@import "mixins.less";
+
+body{
+    width:400px;
+    height:400px;
+}
+
+/* ローディング
+--------------------------------------------------- */
+.Loading{
+    z-index:10000;
+}
+
+.Loading canvas.start{
+    .animation(loading, 0.8s, linear, 0s, infinite);
+}
+
+@-webkit-keyframes loading {.rotate360;}
+@-moz-keyframes loading {.rotate360;}
+@-o-keyframes loading {.rotate360;}
+@keyframes loading {.rotate360;}
+

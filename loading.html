@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<title></title>
+<link rel="stylesheet" href="loading.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="jquery.loading.js"></script>
+<script>
+(function($, window, document, undefined){    
+    
+    $(function(){
+        var IEV_TAP = 'ontouchstart' in window ? "touchend" : "click";
+        $("#Loading1").loading({
+            name:"one"
+        });
+        $("#Loading2").loading({
+            name:"two",
+            color:"51, 102, 153"
+        });
+        $("#start").on(IEV_TAP, function(){
+            $.Loading.start("one");
+        });
+        $("#stop").on(IEV_TAP, function(){
+            $.Loading.stop("one");
+        });
+        $("#start2").on(IEV_TAP, function(){
+            $.Loading.start("two");
+        });
+        $("#stop2").on(IEV_TAP, function(){
+            $.Loading.stop("two");
+        });
+    });
+
+}(jQuery, this, this.document));
+</script>
+</head>
+<body>
+<button id="start">スタート 1</button><button id="stop">ストップ 1</button>
+<button id="start2">スタート 2</button><button id="stop2">ストップ 2</button>
+<div id="Loading1" class="Loading"></div>
+<div id="Loading2" class="Loading"></div>
+</body>
+</html>

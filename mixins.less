@@ -1,0 +1,24 @@
+.animation(@name: none, @duration: 0, @timing: ease, @delay: 0, @count: 1, @direction: normal){
+    -webkit-animation:@arguments;
+    -moz-animation:@arguments;
+    -ms-animation:@arguments;
+    -o-animation:@arguments;
+    animation:@arguments;
+}
+
+.rotate(@degrees) {
+    -webkit-transform:rotate(@degrees);
+    -moz-transform:rotate(@degrees);
+    -ms-transform:rotate(@degrees);
+    -o-transform:rotate(@degrees);
+    transform:rotate(@degrees);
+}
+
+.rotate360(){
+    from {
+        .rotate(0deg);
+    }
+    to {
+        .rotate(360deg);
+    }
+}

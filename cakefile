@@ -1,0 +1,13 @@
+exec = (require 'child_process').exec
+
+files=[
+  'jquery.loading.coffee'
+]
+
+exec "coffee -j jquery.loading.js -wc #{files.join ' '}",(err,stdout,stderr)->
+  throw err if err
+  console.log stdout+stderr
+
+exec "recess loading.less:loading.css --watch", (err,stdout,stderr)->
+  throw err if err
+  console.log stdout+stderr
