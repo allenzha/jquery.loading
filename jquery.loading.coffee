@@ -4,18 +4,22 @@ class $.Loading
     @event =
         RESET:"orientationchange resize"
 
-    @STOP_TIMEOUT = 30
+    @TIMEOUT = 30
     @DEF_NAME = "none"
 
     @start = (name = Loading.DEF_NAME)->
         instance = Loading.instances[name]
         instance.$canvas.addClass "start"
-        instance.$target.css 
-            visibility:"hidden"
-            display:"block"
-        instance._setPosition()
-        instance.$target.css "visibility", "visible"
-        instance.isLoading = true
+        window.setTimeout(
+            ->
+                instance.$target.css 
+                    visibility:"hidden"
+                    display:"block"
+                instance._setPosition()
+                instance.$target.css "visibility", "visible"
+                instance.isLoading = true
+            , Loading.TIMEOUT
+        )
         @
 
     @stop = (name = Loading.DEF_NAME)->
@@ -27,7 +31,7 @@ class $.Loading
                     display:"none"
                 instance.isLoading = false
                 @
-            , Loading.STOP_TIMEOUT
+            , Loading.TIMEOUT
         )
         @
 

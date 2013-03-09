@@ -7,7 +7,7 @@
       RESET: "orientationchange resize"
     };
 
-    Loading.STOP_TIMEOUT = 30;
+    Loading.TIMEOUT = 30;
 
     Loading.DEF_NAME = "none";
 
@@ -18,13 +18,15 @@
       }
       instance = Loading.instances[name];
       instance.$canvas.addClass("start");
-      instance.$target.css({
-        visibility: "hidden",
-        display: "block"
-      });
-      instance._setPosition();
-      instance.$target.css("visibility", "visible");
-      instance.isLoading = true;
+      window.setTimeout(function() {
+        instance.$target.css({
+          visibility: "hidden",
+          display: "block"
+        });
+        instance._setPosition();
+        instance.$target.css("visibility", "visible");
+        return instance.isLoading = true;
+      }, Loading.TIMEOUT);
       return this;
     };
 
@@ -41,7 +43,7 @@
         });
         instance.isLoading = false;
         return this;
-      }, Loading.STOP_TIMEOUT);
+      }, Loading.TIMEOUT);
       return this;
     };
 
